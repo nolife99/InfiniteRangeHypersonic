@@ -1,7 +1,7 @@
 using MelonLoader;
 using BTD_Mod_Helper;
 using System.Linq;
-using Hypersonic;
+using HypersonicInfiniteRange;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Behaviors.Attack;
 using HarmonyLib;
@@ -9,18 +9,18 @@ using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.ModOptions;
 
-[assembly: MelonInfo(typeof(HypersonicSimple), "SimpleHypersonic", ModHelperData.Version, "nolife99")]
+[assembly: MelonInfo(typeof(ModMain), ModHelperData.Name, ModHelperData.Version, ModHelperData.Version)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
-namespace Hypersonic;
+namespace HypersonicInfiniteRange;
 
-public sealed class HypersonicSimple : BloonsTD6Mod
+public sealed class ModMain : BloonsTD6Mod
 {
     public override void OnApplicationStart()
     {
         LoggerInstance.Msg("Loaded hypersonic!");
         HarmonyInstance.Patch(AccessTools.Method(typeof(GameModelLoader), nameof(GameModelLoader.Load)), 
-            postfix : new(AccessTools.Method(typeof(HypersonicSimple), nameof(HypersonicSimple.OnGameLoad))));
+            postfix : new(AccessTools.Method(typeof(ModMain), nameof(ModMain.OnGameLoad))));
     }
     public static void OnGameLoad(ref GameModel __result) => __result.towers.AsParallel().ForAll(t =>
     {
@@ -43,12 +43,12 @@ public sealed class HypersonicSimple : BloonsTD6Mod
     {
         internal static readonly ModSettingBool Hypersonic = new(true)
         {
-            displayName = "enable hypersonic",
+            displayName = "Enable hypersonic",
             icon = VanillaSprites.FasterBarrelSpinUpgradeIcon
         };
         internal static readonly ModSettingBool InfiniteRange = new(true)
         {
-            displayName = "enable infinite range",
+            displayName = "Enable infinite range",
             icon = VanillaSprites.EpicRangeUpgradeIcon
         };
     }

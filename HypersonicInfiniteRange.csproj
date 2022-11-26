@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
-        <RootNamespace>Hypersonic</RootNamespace>
+        <RootNamespace>HypersonicInfiniteRange</RootNamespace>
         <Configurations>Debug;Release</Configurations>
         <Nullable>enable</Nullable>
-        <AssemblyName>Hypersonic</AssemblyName>
+        <AssemblyName>HypersonicInfiniteRange</AssemblyName>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
     
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <Optimize>False</Optimize>
+        <Optimize>True</Optimize>
         <DebugType>embedded</DebugType>
     </PropertyGroup>
 
