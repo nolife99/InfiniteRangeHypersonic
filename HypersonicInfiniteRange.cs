@@ -14,7 +14,7 @@ using BTD_Mod_Helper.Api.ModOptions;
 
 namespace Hypersonic;
 
-public class HypersonicSimple : BloonsTD6Mod
+public sealed class HypersonicSimple : BloonsTD6Mod
 {
     public override void OnApplicationStart()
     {
@@ -39,17 +39,17 @@ public class HypersonicSimple : BloonsTD6Mod
             }
         });
     });
-}
-public class Settings : ModSettings
-{
-    public static readonly ModSettingBool Hypersonic = new(true)
+    sealed class Settings : ModSettings
     {
-        displayName = "Enable hypersonic",
-        icon = VanillaSprites.FasterBarrelSpinUpgradeIcon
-    };
-    public static readonly ModSettingBool InfiniteRange = new(true)
-    {
-        displayName = "Enable infinite range",
-        icon = VanillaSprites.EpicRangeUpgradeIcon
-    };
+        internal static readonly ModSettingBool Hypersonic = new(true)
+        {
+            displayName = "enable hypersonic",
+            icon = VanillaSprites.FasterBarrelSpinUpgradeIcon
+        };
+        internal static readonly ModSettingBool InfiniteRange = new(true)
+        {
+            displayName = "enable infinite range",
+            icon = VanillaSprites.EpicRangeUpgradeIcon
+        };
+    }
 }
