@@ -35,7 +35,7 @@ public sealed class ModMain : BloonsTD6Mod
                 if (Settings.Hypersonic) wep.Do(w => w.rate = 0);
 
                 var length = wep.Length;
-                for (var j = 0; j < length; j++) wep = wep.AddItem(wep[j]).ToArray();
+                for (var i = 0; i < length; i++) wep = wep.AddItem(wep[i]).ToArray();
             }
         });
     });
@@ -43,12 +43,12 @@ public sealed class ModMain : BloonsTD6Mod
     {
         internal static readonly ModSettingBool Hypersonic = new(true)
         {
-            displayName = "Enable hypersonic",
+            displayName = "Enable hypersonic (requires restart)",
             icon = VanillaSprites.FasterBarrelSpinUpgradeIcon
         };
         internal static readonly ModSettingBool InfiniteRange = new(true)
         {
-            displayName = "Enable infinite range",
+            displayName = "Enable infinite range (requires restart)",
             icon = VanillaSprites.EpicRangeUpgradeIcon
         };
     }
