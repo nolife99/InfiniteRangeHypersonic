@@ -45,11 +45,11 @@ public class Settings : ModSettings
     public static readonly ModSettingBool Hypersonic = new(true)
     {
         displayName = "Enable hypersonic",
-        icon = VanillaSprites.DartlingGunner500
+        icon = VanillaSprites.FasterBarrelSpinUpgradeIcon
     };
     public static readonly ModSettingBool InfiniteRange = new(true)
     {
         displayName = "Enable infinite range",
-        icon = VanillaSprites.ExtraRangeUpgradeIcon
+        icon = VanillaSprites.EpicRangeUpgradeIcon
     };
 }
