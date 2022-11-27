@@ -8,7 +8,7 @@ on:
       - '*'
 
 env:
-  PROJECT_NAME: Hypersonic
+  PROJECT_NAME: HypersonicInfiniteRange
   MOD_HELPER_BRANCH: master
   
   MOD_HELPER_NAME: Btd6ModHelper
