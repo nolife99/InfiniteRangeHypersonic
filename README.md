@@ -1,2 +1,6 @@
-2 configurables :)
-unoriginal but just small little thing :>
+# Infinite Range + Hypersonic
+This mod contains:
+* Togglable infinite range
+* Togglable extreme-hypersonic
+
+*This mod is unoriginal!!!*
