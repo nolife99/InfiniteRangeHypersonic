@@ -1,14 +1,14 @@
+using HarmonyLib;
 using MelonLoader;
-using BTD_Mod_Helper;
-using System.Linq;
-using HypersonicInfiniteRange;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Towers.Behaviors.Attack;
-using HarmonyLib;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper;
+using System.Linq;
 
+using HypersonicInfiniteRange;
 [assembly: MelonInfo(typeof(ModMain), ModHelperData.Name, ModHelperData.Version, ModHelperData.Version)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
@@ -24,22 +24,21 @@ public sealed class ModMain : BloonsTD6Mod
     }
     public static void OnGameLoad(ref GameModel __result) => __result.towers.AsParallel().ForAll(t =>
     {
-        if (Settings.InfiniteRange) t.range = 999;
+        if (Configs.InfiniteRange) t.range = 999;
         t.behaviors.Do(m =>
         {
-            var potentialAttack = m.TryCast<AttackModel>();
-            if (potentialAttack != null)
+            var pAtt = m.TryCast<AttackModel>();
+            if (pAtt != null)
             {
-                if (Settings.InfiniteRange) potentialAttack.range = 999;
-                var wep = potentialAttack.weapons;
-                if (Settings.Hypersonic) wep.Do(w => w.rate = 0);
-
-                var length = wep.Length;
-                for (var i = 0; i < length; i++) wep = wep.AddItem(wep[i]).ToArray();
+                if (Configs.InfiniteRange) pAtt.range = 999;
+                
+                var wep = pAtt.weapons;
+                if (Configs.Hypersonic) wep.Do(w => w.rate = 0);
+                for (var i = 0; i < wep.Length; i++) wep = wep.AddItem(wep[i]).ToArray();
             }
         });
     });
-    sealed class Settings : ModSettings
+    sealed class Configs : ModSettings
     {
         internal static readonly ModSettingBool Hypersonic = new(true)
         {
