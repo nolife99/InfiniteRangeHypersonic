@@ -30,7 +30,7 @@ public sealed class ModMain : BloonsTD6Mod
     }
     public static void OnGameLoad(ref GameModel __result) => __result.towers.AsParallel().ForAll(t =>
     {
-        if (Settings.InfiniteRange) t.range = 999;
+        if (Configs.InfiniteRange) t.range = 999;
         t.behaviors.Do(m =>
         {
             var attack = m.TryCast<AttackModel>();
@@ -49,7 +49,7 @@ public sealed class ModMain : BloonsTD6Mod
             }
         });
     });
-    sealed class Settings : ModSettings
+    sealed class Configs : ModSettings
     {
         internal static readonly ModSettingBool Hypersonic = new(true)
         {
