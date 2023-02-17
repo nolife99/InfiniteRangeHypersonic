@@ -2,26 +2,25 @@ using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.Extensions;
 
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
-
-using HarmonyLib;
-using MelonLoader;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 
 using System.Linq;
 using System.Threading.Tasks;
 
+using HarmonyLib;
+using MelonLoader;
 using HypersonicInfiniteRange;
-using BTD_Mod_Helper.Extensions;
-using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 
 [assembly: MelonInfo(typeof(ModMain), ModHelperData.Name, ModHelperData.Version, ModHelperData.RepoOwner)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
 namespace HypersonicInfiniteRange;
 
-public sealed class ModMain : BloonsTD6Mod
+sealed class ModMain : BloonsTD6Mod
 {
     public override void OnNewGameModel(GameModel gameModel) => gameModel.towers.AsParallel().ForAll(t =>
     {
